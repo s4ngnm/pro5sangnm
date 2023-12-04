@@ -1,8 +1,7 @@
 $(document).ready(function() {
-    // Initialize DataTable
     var table = $('#proxyTable').DataTable({
         ajax: {
-            url: 'api.php', // Endpoint to fetch data from the server
+            url: 'api.php',
             dataSrc: ''
         },
         columns: [
@@ -20,20 +19,55 @@ $(document).ready(function() {
         ]
     });
 
-    // Function to reload table data (useful after adding or editing proxy)
     function reloadTable() {
         table.ajax.reload();
     }
 
-    // Function to edit a proxy (you can implement this as needed)
-    window.editProxy = function(id) {
-        // Implement your edit logic here
-        console.log('Edit Proxy ID: ' + id);
+    window.addProxy = function() {
+        var fullFormat = prompt('Enter Proxy (IP:Port:Username:Password)');
+        var dateCreated = prompt('Enter Date Created');
+        var dateExpired = prompt('Enter Date Expired');
+        var note = prompt('Enter Note');
+
+        $.post('api.php', {
+            addProxy: true,
+            fullFormat: fullFormat,
+            dateCreated: dateCreated,
+            dateExpired: dateExpired,
+            note: note
+        }, function() {
+            reloadTable();
+        });
     };
 
-    // Function to delete a proxy (you can implement this as needed)
+    window.editProxy = function(id) {
+        var fullFormat = prompt('Enter Proxy (IP:Port:Username:Password)');
+        var dateCreated = prompt('Enter Date Created');
+        var dateExpired = prompt('Enter Date Expired');
+        var note = prompt('Enter Note');
+
+        $.post('api.php', {
+            editProxy: true,
+            id: id,
+            fullFormat: fullFormat,
+            dateCreated: dateCreated,
+            dateExpired: dateExpired,
+            note: note
+        }, function() {
+            reloadTable();
+        });
+    };
+
     window.deleteProxy = function(id) {
-        // Implement your delete logic here
-        console.log('Delete Proxy ID: ' + id);
+        var confirmDelete = confirm('Are you sure you want to delete this proxy?');
+        
+        if (confirmDelete) {
+            $.post('api.php', {
+                deleteProxy: true,
+                id: id
+            }, function() {
+                reloadTable();
+            });
+        }
     };
 });
