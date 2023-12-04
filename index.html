@@ -4,52 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Proxy Manager Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fefefe;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Proxy Manager Dashboard</h1>
+    <div class="container">
+        <h1 class="text-center">Proxy Manager Dashboard</h1>
+        <button class="btn btn-primary mb-3" onclick="addProxy()">Add Proxy</button>
 
-    <table id="proxyTable" class="display">
-        <thead>
-            <tr>
-                <th>Proxy</th>
-                <th>Date Created</th>
-                <th>Date Expired</th>
-                <th>Note</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+        <table id="proxyTable" class="table">
+            <thead>
+                <tr>
+                    <th>Proxy</th>
+                    <th>Date Created</th>
+                    <th>Date Expired</th>
+                    <th>Note</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
-    <button onclick="addProxy()">Add Proxy</button>
-
-    <!-- ... (Phần HTML trước đó) -->
-
-<!-- Modal for adding/editing proxy -->
-<div id="proxyModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Add/Edit Proxy</h2>
+    <div id="proxyModal" class="modal">
+        <div class="close" onclick="closeModal()">&times;</div>
+        <h2 class="text-center">Add/Edit Proxy</h2>
         <form id="proxyForm">
-            <label for="fullFormat">Proxy (IP:Port:Username:Password):</label>
-            <input type="text" id="fullFormat" name="fullFormat" required><br>
-            <label for="dateCreated">Date Created:</label>
-            <input type="text" id="dateCreated" name="dateCreated" required><br>
-            <label for="dateExpired">Date Expired:</label>
-            <input type="text" id="dateExpired" name="dateExpired" required><br>
-            <label for="note">Note:</label>
-            <input type="text" id="note" name="note"><br>
-            <button type="button" onclick="saveProxy()">Save</button>
+            <div class="form-group">
+                <label for="fullFormat">Proxy (IP:Port:Username:Password):</label>
+                <input type="text" class="form-control" id="fullFormat" name="fullFormat" required>
+            </div>
+            <div class="form-group">
+                <label for="dateCreated">Date Created:</label>
+                <input type="text" class="form-control" id="dateCreated" name="dateCreated" required>
+            </div>
+            <div class="form-group">
+                <label for="dateExpired">Date Expired:</label>
+                <input type="text" class="form-control" id="dateExpired" name="dateExpired" required>
+            </div>
+            <div class="form-group">
+                <label for="note">Note:</label>
+                <input type="text" class="form-control" id="note" name="note">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="saveProxy()">Save</button>
         </form>
     </div>
-</div>
-
-<!-- ... (Phần HTML tiếp theo) -->
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
