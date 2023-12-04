@@ -57,9 +57,13 @@ $(document).ready(function() {
             dateCreated: dateCreated,
             dateExpired: dateExpired,
             note: note
-        }, function() {
-            reloadTable();
-            closeModal();
+        }, function(response) {
+            if (response.success) {
+                reloadTable();
+                closeModal();
+            } else {
+                alert('Error: ' + response.message);
+            }
         });
     };
 
@@ -70,8 +74,12 @@ $(document).ready(function() {
             $.post('api.php', {
                 deleteProxy: true,
                 id: id
-            }, function() {
-                reloadTable();
+            }, function(response) {
+                if (response.success) {
+                    reloadTable();
+                } else {
+                    alert('Error: ' + response.message);
+                }
             });
         }
     };
