@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "proxies";
+$dbname = "db_quanlyvia";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
