@@ -24,6 +24,30 @@
 
     <button onclick="addProxy()">Add Proxy</button>
 
+    <!-- ... (Phần HTML trước đó) -->
+
+<!-- Modal for adding/editing proxy -->
+<div id="proxyModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Add/Edit Proxy</h2>
+        <form id="proxyForm">
+            <label for="fullFormat">Proxy (IP:Port:Username:Password):</label>
+            <input type="text" id="fullFormat" name="fullFormat" required><br>
+            <label for="dateCreated">Date Created:</label>
+            <input type="text" id="dateCreated" name="dateCreated" required><br>
+            <label for="dateExpired">Date Expired:</label>
+            <input type="text" id="dateExpired" name="dateExpired" required><br>
+            <label for="note">Note:</label>
+            <input type="text" id="note" name="note"><br>
+            <button type="button" onclick="saveProxy()">Save</button>
+        </form>
+    </div>
+</div>
+
+<!-- ... (Phần HTML tiếp theo) -->
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     <script src="script.js"></script>
