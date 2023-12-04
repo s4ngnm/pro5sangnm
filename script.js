@@ -43,26 +43,35 @@ $(document).ready(function() {
 
     window.saveProxy = function() {
         var id = '';
-        var fullFormat = document.getElementById('fullFormat').value;
-        var dateCreated = document.getElementById('dateCreated').value;
-        var dateExpired = document.getElementById('dateExpired').value;
-        var note = document.getElementById('note').value;
+        var fullFormat = $('#fullFormat').val();
+        var dateCreated = $('#dateCreated').val();
+        var dateExpired = $('#dateExpired').val();
+        var note = $('#note').val();
 
         var action = id === '' ? 'addProxy' : 'editProxy';
 
-        $.post('api.php', {
-            [action]: true,
-            id: id,
-            fullFormat: fullFormat,
-            dateCreated: dateCreated,
-            dateExpired: dateExpired,
-            note: note
-        }, function(response) {
-            if (response.success) {
-                reloadTable();
-                closeModal();
-            } else {
-                alert('Error: ' + response.message);
+        $.ajax({
+            type: 'POST',
+            url: 'api.php',
+            dataType: 'json',
+            data: {
+                [action]: true,
+                id: id,
+                fullFormat: fullFormat,
+                dateCreated: dateCreated,
+                dateExpired: dateExpired,
+                note: note
+            },
+            success: function(response) {
+                if (response.success) {
+                    reloadTable();
+                    closeModal();
+                } else {
+                    alert('Error: ' + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert('Error: ' + error);
             }
         });
     };
@@ -71,14 +80,23 @@ $(document).ready(function() {
         var confirmDelete = confirm('Are you sure you want to delete this proxy?');
         
         if (confirmDelete) {
-            $.post('api.php', {
-                deleteProxy: true,
-                id: id
-            }, function(response) {
-                if (response.success) {
-                    reloadTable();
-                } else {
-                    alert('Error: ' + response.message);
+            $.ajax({
+                type: 'POST',
+                url: 'api.php',
+                dataType: 'json',
+                data: {
+                    deleteProxy: true,
+                    id: id
+                },
+                success: function(response) {
+                    if (response.success) {
+                        reloadTable();
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    alert('Error: ' + error);
                 }
             });
         }
