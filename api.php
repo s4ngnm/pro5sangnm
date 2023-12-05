@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: application/json');
 
-$servername = "your_servername";
-$username = "your_username";
-$password = "your_password";
-$dbname = "your_dbname";
+$servername = "cloud3.googiehost.com/";
+$username = "sngnmcis_dbvia";
+$password = "S@ng3346911a45";
+$dbname = "sngnmcis_dbvia";
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
