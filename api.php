@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$servername = "198.45.114.194";
+$servername = "localhost";
 $username = "sngnmcis_dbvia";
 $password = "S@ng3346911a45";
 $dbname = "sngnmcis_dbvia";
