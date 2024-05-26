@@ -451,10 +451,10 @@
 </body>
 
 
-    
-<input type="hidden" name="global_site_url" value="https://s4ngnm.github.io/pro5sangnm/" />
-<input type="hidden" name="global_url" value="https://s4ngnm.github.io/pro5sangnm/" />
-<input type="hidden" name="global_token" value="78a036796283961112a45fd435f50e87" />
+     
+<input type="hidden" name="global_site_url" value="https://s4ngnm.github.io/pro5page" />
+<input type="hidden" name="global_url" value="https://s4ngnm.github.io/pro5page" />
+<input type="hidden" name="global_token" value="1da9acbffed8acd1016ca010eb859663" />
 <input type="hidden" name="global_number_decimal_point" value="." />
 <input type="hidden" name="global_number_thousands_separator" value="'" />
 
@@ -476,39 +476,43 @@
             <script src="https://ezonecard.com/themes/altum/assets/js/libraries/fontawesome-solid.min.js?v=4700"></script>
             <script src="https://ezonecard.com/themes/altum/assets/js/libraries/fontawesome-brands.min.js?v=4700"></script>
     
+    <script src="https://ezonecard.com/themes/altum/assets/js/libraries/jquery-qrcode.min.js"></script>
 
-            <script>
-                'use strict';     
-                let generate_qr = (element, data) => {
-                    let default_options = {
-                        render: 'image',
-                        minVersion: 1,
-                        maxVersion: 40,
-                        ecLevel: 'L',
-                        left: 0,
-                        top: 0,
-                        size: 1000,
-                        text: data,
-                        quiet: 0,
-                        mode: 0,
-                        mSize: 0.1,
-                        mPosX: 0.5,
-                        mPosY: 0.5,
-                    };           
-                    /* Delete already existing image generated */
-                    element.querySelector('img') && element.querySelector('img').remove();
-                    $(element).qrcode(default_options);          
-                    /* Set class to QR */
-                    element.querySelector('img').classList.add('w-100');
-                }            
-                let qr_codes = document.querySelectorAll('[data-qr]');           
-                qr_codes.forEach(element => {
-                    generate_qr(element, element.getAttribute('data-qr'));
-                })
-            </script>
+<script>
+    'use strict';
 
+    let generate_qr = (element, data) => {
+        let default_options = {
+            render: 'image',
+            minVersion: 1,
+            maxVersion: 40,
+            ecLevel: 'L',
+            left: 0,
+            top: 0,
+            size: 1000,
+            text: data,
+            quiet: 0,
+            mode: 0,
+            mSize: 0.1,
+            mPosX: 0.5,
+            mPosY: 0.5,
+        };
 
-    <script>
+        /* Delete already existing image generated */
+        element.querySelector('img') && element.querySelector('img').remove();
+        $(element).qrcode(default_options);
+
+        /* Set class to QR */
+        element.querySelector('img').classList.add('w-100');
+    }
+
+    let qr_codes = document.querySelectorAll('[data-qr]');
+
+    qr_codes.forEach(element => {
+        generate_qr(element, element.getAttribute('data-qr'));
+    })
+</script>
+<script>
     /* Background backdrop fix on modal */
     let backdrop_filter = null;
     $('.modal').on('show.bs.modal', function () {
