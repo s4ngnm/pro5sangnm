@@ -304,6 +304,20 @@
     </a>
 </div>
 <!------QR CODE BANKING------>
+<div id="biolink_block_id_935" data-biolink-block-id="935" class="col-12 my-2">
+    <a href="#" data-toggle="modal" data-target="#share_935" data-track-biolink-block-id="935" class="btn btn-block btn-primary link-btn link-hover-animation link-btn-round  animate__animated animate__repeat-1 animate__bounce animate__delay-2s" style="background: #ffffff;color: #000000;border-width: 0px;border-color: #000000;border-style: solid;box-shadow: 0px 0px 10px 0px #000000;text-align: center;" data-text-color data-border-width data-border-radius data-border-style data-border-color data-border-shadow data-animation data-background-color data-text-alignment>
+        <div class="link-btn-image-wrapper link-btn-round" style="display: none;">
+            <img src="" class="link-btn-image" loading="lazy" />
+        </div>
+
+        <span data-icon>
+            <i class="fas fa-share-square mr-1"></i>
+        </span>
+
+        <span data-name>Chia sẻ</span>
+    </a>
+</div>
+
                         
 </div>
 </main>
@@ -332,9 +346,9 @@
             <div class="modal-body">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="w-100" data-qr="28639799999">
+                        
                             <img src="https://i.ibb.co/8zv7b0H/z5478676196735-6a888f2c79f43697714a31f7bd1bf03c.jpg" class="w-100" loading="lazy" />
-                        </div>
+              
                     </div>
                 </div>
 
@@ -360,9 +374,9 @@
             <div class="modal-body">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="w-100" data-qr="9978901916">
+                        
                             <img src="https://i.ibb.co/7zpkjkK/z5478358377712-4c68cacd05c1e63ae113fdde390a021d.jpg" class="w-100" loading="lazy" />
-                        </div>
+                        
                     </div>
                 </div>
 
@@ -375,6 +389,57 @@
     </div>
 </div>
 <!---END QR CODE BANKING--------->
+<div class="modal fade" id="share_935" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Chia sẻ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Đóng">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="w-100" data-qr="https://s4ngnm.github.io/pro5page"></div>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between flex-wrap my-3">
+                    <a href="mailto:?body=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fa fa-fw fa-envelope"></i>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-facebook"></i>
+                    </a>
+                    <a href="https://twitter.com/share?url=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-twitter"></i>
+                    </a>
+                    <a href="https://pinterest.com/pin/create/link/?url=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-pinterest"></i>
+                    </a>
+                    <a href="https://linkedin.com/shareArticle?url=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.reddit.com/submit?url=https://s4ngnm.github.io/pro5page" target="_blank" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-reddit"></i>
+                    </a>
+                    <a href="https://wa.me/?text=https://s4ngnm.github.io/pro5page" class="btn btn-gray-100 mb-2">
+                        <i class="fab fa-fw fa-whatsapp"></i>
+                    </a>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" value="https://s4ngnm.github.io/pro5page" onclick="this.select();" readonly="readonly" />
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 
 </body>
@@ -405,6 +470,38 @@
             <script src="https://ezonecard.com/themes/altum/assets/js/libraries/fontawesome-solid.min.js?v=4700"></script>
             <script src="https://ezonecard.com/themes/altum/assets/js/libraries/fontawesome-brands.min.js?v=4700"></script>
     
+
+            <script>
+                'use strict';     
+                let generate_qr = (element, data) => {
+                    let default_options = {
+                        render: 'image',
+                        minVersion: 1,
+                        maxVersion: 40,
+                        ecLevel: 'L',
+                        left: 0,
+                        top: 0,
+                        size: 1000,
+                        text: data,
+                        quiet: 0,
+                        mode: 0,
+                        mSize: 0.1,
+                        mPosX: 0.5,
+                        mPosY: 0.5,
+                    };           
+                    /* Delete already existing image generated */
+                    element.querySelector('img') && element.querySelector('img').remove();
+                    $(element).qrcode(default_options);          
+                    /* Set class to QR */
+                    element.querySelector('img').classList.add('w-100');
+                }            
+                let qr_codes = document.querySelectorAll('[data-qr]');           
+                qr_codes.forEach(element => {
+                    generate_qr(element, element.getAttribute('data-qr'));
+                })
+            </script>
+
+
     <script>
     /* Background backdrop fix on modal */
     let backdrop_filter = null;
